@@ -13,7 +13,8 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  if (req.method === "GET" && req.url === "/api/status") {
+  const urlCaminho = req.url.split("?")[0];
+  if (req.method === "GET" && urlCaminho === "/api/status") {
     res.writeHead(200, { "Content-Type": "application/json; charset=utf-8" });
     res.end(
       JSON.stringify({
